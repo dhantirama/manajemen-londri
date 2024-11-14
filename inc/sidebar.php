@@ -80,12 +80,12 @@ session_start();
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="ui-alerts.html" class="menu-link">
+                        <a href="level.php" class="menu-link">
                             <div data-i18n="Alerts">Level</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="ui-badges.html" class="menu-link">
+                        <a href="customer.php" class="menu-link">
                             <div data-i18n="Badges">Customer</div>
                         </a>
                     </li>

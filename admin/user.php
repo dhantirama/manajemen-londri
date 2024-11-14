@@ -1,8 +1,9 @@
 <?php
 
-include 'koneksi.php';
+include '../koneksi.php';
 //munculkan satu atau semua kolom dari tabel user
-$queryUser = mysqli_query($koneksi, "SELECT * FROM user");
+$queryUser = mysqli_query($koneksi, "SELECT level.nama_level, user.* FROM user LEFT JOIN level ON level.id = user.id_level");
+
 //mysqli_fetch_assoc = untuk menjadikan hasil query menjadi sebuah data (object, atau array)
 
 //jika parameternya ada ?delete=nilai param
@@ -48,7 +49,7 @@ if (isset($_GET['delete'])) {
     <title>Dashboard - Analytics | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
 
     <meta name="description" content="" />
-    <?php include 'inc/head.php'; ?>
+    <?php include '../inc/head.php'; ?>
 
 </head>
 
@@ -58,14 +59,14 @@ if (isset($_GET['delete'])) {
         <div class="layout-container">
             <!-- Menu -->
 
-            <?php include 'inc/sidebar.php'; ?>
+            <?php include '../inc/sidebar.php'; ?>
             <!-- / Menu -->
 
             <!-- Layout container -->
             <div class="layout-page">
                 <!-- Navbar -->
 
-                <?php include 'inc/nav.php'; ?>
+                <?php include '../inc/nav.php'; ?>
                 <!-- / Navbar -->
 
                 <!-- Content wrapper -->
@@ -83,7 +84,7 @@ if (isset($_GET['delete'])) {
                                             <?php if (isset($_GET['hapus'])):  ?>
                                                 <div class="alert alert-primary" role="alert">Data Berhasil Dihapus</div>
                                             <?php endif ?>
-                                            <div align="right" class="mb-3 just"><a href="tambah_user.php" class="btn btn-primary btn-sm"><span class="tf-icon bx bx-pencil bx-18px"></span> Tambah </a></div>
+                                            <div align="right" class="mb-3 just"><a href="add_user.php" class="btn btn-primary btn-sm"><span class="tf-icon bx bx-pencil bx-18px"></span> Tambah </a></div>
                                             <table class="table">
                                                 <thead>
                                                     <tr>
@@ -102,7 +103,7 @@ if (isset($_GET['delete'])) {
                                                             <td><?php echo $row['nama_level'] ?></td>
                                                             <td><?php echo $row['nama'] ?></td>
                                                             <td><?php echo $row['email'] ?></td>
-                                                            <td><a href="tambah_user.php?edit=<?php echo $row['id'] ?>" class="btn btn-primary btn-sm"><span class="tf-icon bx bx-pencil bx-18px"></span></a> <a onclick="return confirm('Apakah anda yakin akan menghapus data ini??')" href="user.php?delete=<?php echo $row['id'] ?>" class="btn btn-secondary btn-sm"><span class="tf-icon bx bx-trash bx-18px"></span></a></td>
+                                                            <td><a href="add_user.php?edit=<?php echo $row['id'] ?>" class="btn btn-primary btn-sm"><i class='bx bx-edit-alt'></i></a> <a onclick="return confirm('Apakah anda yakin akan menghapus data ini??')" href="user.php?delete=<?php echo $row['id'] ?>" class="btn btn-secondary btn-sm"><i class='bx bx-trash'></i></a></td>
                                                         </tr>
                                                     <?php } ?>
                                                 </tbody>
@@ -120,7 +121,7 @@ if (isset($_GET['delete'])) {
                         <!-- / Content -->
 
                         <!-- Footer -->
-                        <?php include 'inc/footer.php'; ?>
+                        <?php include '../inc/footer.php'; ?>
                         <!-- / Footer -->
 
                         <div class="content-backdrop fade"></div>
@@ -138,7 +139,8 @@ if (isset($_GET['delete'])) {
 
         <!-- Core JS -->
         <!-- build:js assets/vendor/js/core.js -->
-        <?php include 'inc/js.php'; ?>
+        <?php include '../inc/js.php'; ?>
+    </div>
 </body>
 
 </html>

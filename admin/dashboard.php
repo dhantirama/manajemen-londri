@@ -21,7 +21,7 @@
     data-template="vertical-menu-template-free">
 
 <head>
-    <?php include 'inc/head.php'; ?>
+    <?php include '../inc/head.php'; ?>
 </head>
 
 <body>
@@ -30,14 +30,14 @@
         <div class="layout-container">
             <!-- Menu -->
 
-            <?php include 'inc/sidebar.php'; ?>
+            <?php include '../inc/sidebar.php'; ?>
             <!-- / Menu -->
 
             <!-- Layout container -->
             <div class="layout-page">
                 <!-- Navbar -->
 
-                <?php include 'inc/nav.php'; ?>
+                <?php include '../inc/nav.php'; ?>
                 <!-- / Navbar -->
 
                 <!-- Content wrapper -->
@@ -563,7 +563,11 @@
                     <!-- / Content -->
 
                     <!-- Footer -->
-                    <?php include 'inc/footer.php'; ?>
+                    <?php include '../inc/footer.php'; ?>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
