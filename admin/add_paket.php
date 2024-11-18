@@ -2,26 +2,26 @@
 include '../koneksi.php';
 //aksi untuk tambah
 if (isset($_POST['simpan'])) {
-    $nama_customer = $_POST['nama_customer'];
-    $phone = $_POST['phone'];
-    $address = $_POST['address'];
+    $nama_paket = $_POST['nama_paket'];
+    $harga = $_POST['harga'];
+    $deskripsi = $_POST['deskripsi'];
 
-    $insert = mysqli_query($koneksi, "INSERT INTO  customer (nama_customer, phone, address) VALUES ('$nama_customer', '$phone', '$address')");
-    header("location:customer.php?tambah=berhasil");
+    $insert = mysqli_query($koneksi, "INSERT INTO  paket (nama_paket, harga, deskripsi) VALUES ('$nama_paket', '$harga', '$deskripsi')");
+    header("location:paket.php?tambah=berhasil");
 }
 
 //aksi untuk edit
 $id = isset($_GET['edit']) ? $_GET['edit'] : '';
-$queryEdit = mysqli_query($koneksi, "SELECT * FROM customer WHERE id = '$id'");
+$queryEdit = mysqli_query($koneksi, "SELECT * FROM paket WHERE id = '$id'");
 $rowEdit = mysqli_fetch_assoc($queryEdit);
 
 if (isset($_POST['edit'])) {
-    $nama_customer = $_POST['nama_customer'];
-    $phone = $_POST['phone'];
-    $address = $_POST['address'];
+    $nama_paket = $_POST['nama_paket'];
+    $harga = $_POST['harga'];
+    $deskripsi = $_POST['deskripsi'];
 
-    $update = mysqli_query($koneksi, "UPDATE customer SET address='$address', nama_customer='$nama_customer', phone='$phone'  WHERE id='$id'");
-    header("location:customer.php?edit=berhasil");
+    $update = mysqli_query($koneksi, "UPDATE paket SET deskripsi='$deskripsi', nama_paket='$nama_paket', harga='$harga'  WHERE id='$id'");
+    header("location:paket.php?edit=berhasil");
 }
 
 ?>
@@ -63,23 +63,23 @@ if (isset($_POST['edit'])) {
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="card">
-                                    <div class="card-header"><?php echo isset($_GET['edit']) ? 'Edit' : 'Tambah' ?> Customer</div>
+                                    <div class="card-header"><?php echo isset($_GET['edit']) ? 'Edit' : 'Tambah' ?> Paket</div>
                                     <div class="card-body">
                                         <form action="" method="post" enctype="multipart/form-data">
                                             <div class="mb-3 row">
                                                 <div class="col-sm-6">
-                                                    <label for="" class="form-label">Nama</label>
-                                                    <input type="text" class="form-control" id="" name="nama_customer" placeholder="Masukkan Nama Customer" required
-                                                        value="<?php echo isset($_GET['edit']) ? $rowEdit['nama_customer'] : '' ?>">
+                                                    <label for="" class="form-label">Paket</label>
+                                                    <input type="text" class="form-control" id="" name="nama_paket" placeholder="Masukkan Nama Paket" required
+                                                        value="<?php echo isset($_GET['edit']) ? $rowEdit['nama_paket'] : '' ?>">
                                                 </div>
                                                 <div class="col-sm-6">
-                                                    <label for="" class="form-label">Telephone</label>
-                                                    <input type="number" class="form-control" id="" name="phone" placeholder="Masukkan Email Anda" required
-                                                        value="<?php echo isset($_GET['edit']) ? $rowEdit['phone'] : '' ?>">
+                                                    <label for="" class="form-label">Harga</label>
+                                                    <input type="number" class="form-control" id="" name="harga" placeholder="Masukkan Email Anda" required
+                                                        value="<?php echo isset($_GET['edit']) ? $rowEdit['harga'] : '' ?>">
                                                 </div>
                                                 <div class="col-sm-12">
-                                                    <label for="" class="form-label">Address</label>
-                                                    <textarea name="address" id="" class="form-control" cols="20" rows="5"><?php echo isset($_GET['edit']) ? $rowEdit['address'] : '' ?></textarea>
+                                                    <label for="" class="form-label">Deksripsi</label>
+                                                    <textarea name="deskripsi" id="" class="form-control" cols="20" rows="5"><?php echo isset($_GET['edit']) ? $rowEdit['deskripsi'] : '' ?></textarea>
                                                 </div>
                                             </div>
                                             <div class="mb-3">

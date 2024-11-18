@@ -90,7 +90,7 @@ session_start();
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="ui-buttons.html" class="menu-link">
+                        <a href="paket.php" class="menu-link">
                             <div data-i18n="Buttons">Paket</div>
                         </a>
                     </li>
@@ -107,12 +107,12 @@ session_start();
                 </a>
                 <ul class="menu-sub">
                     <li class="menu-item">
-                        <a href="extended-ui-perfect-scrollbar.html" class="menu-link">
+                        <a href="data-transaksi.php" class="menu-link">
                             <div data-i18n="Perfect Scrollbar">Data Transaksi</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="extended-ui-text-divider.html" class="menu-link">
+                        <a href="pengembalian.php" class="menu-link">
                             <div data-i18n="Text Divider">Transaksi Pengembalian</div>
                         </a>
                     </li>

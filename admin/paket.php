@@ -1,12 +1,12 @@
 <?php
 
 include '../koneksi.php';
-$customer = mysqli_query($koneksi,"SELECT * FROM customer ORDER BY id DESC");
+$paket = mysqli_query($koneksi,"SELECT * FROM paket ORDER BY id DESC");
 
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
-    $delete = mysqli_query($koneksi, "DELETE FROM customer WHERE id='$id'");
-    header("location: customer.php?hapus=berhasil");
+    $delete = mysqli_query($koneksi, "DELETE FROM paket WHERE id='$id'");
+    header("location: paket.php?hapus=berhasil");
 }
 
 // 
@@ -47,32 +47,30 @@ if (isset($_GET['delete'])) {
                     <div class="container-xxl flex-grow-1 container-p-y">
                         <div class="row">
                             <div class="card">
-                                <h5 class="card-header">Customer</h5>
+                                <h5 class="card-header">Daftar Paket</h5>
                                     <div align="right">
-                                        <a href="add_customer.php" class="btn btn-success"><i class="fa-solid fa-square-plus"></i>Tambah</a>
+                                        <a href="add_paket.php" class="btn btn-success"><i class="fa-solid fa-square-plus"></i>Tambah</a>
                                     </div>
                                 <div class="table-responsive text-nowrap">
                                     <table class="table table-hover">
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Nama Lengkap</th>
-                                                <th>Telepon</th>
-                                                <th>Alamat</th>
-                                                <th>Status</th>
+                                                <th>Nama Paket</th>
+                                                <th>Harga</th>
+                                                <th>Deskripsi</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody class="table-border-bottom-0">
                                             <?php $no = 1;
-                                            while ($rowCustomer = mysqli_fetch_assoc($customer)) : ?>
+                                            while ($rowPaket = mysqli_fetch_assoc($paket)) : ?>
                                                 <tr>
                                                     <td><?php echo $no++ ?></td>
-                                                    <td><?php echo $rowCustomer['nama_customer'] ?></td>
-                                                    <td><?php echo $rowCustomer['phone'] ?></td>
-                                                    <td><?php echo $rowCustomer['address'] ?></td>
-                                                    <td><a href="data-customer.php?edit=<?php echo $rowCustomer['id'] ?>" class="btn btn-success">Lihat Status</a></td>
-                                                    <td>| <a href="add_customer.php?edit=<?php echo $rowCustomer['id'] ?>"><i class='bx bx-edit-alt'></i></a> | | <a href="customer.php?delete=<?php echo $rowCustomer['id'] ?>" onclick="return confirm('Apakah anda yakin akan menghapus data ini??')"><i class='bx bx-trash'></i> |</a></td>
+                                                    <td><?php echo $rowPaket['nama_paket'] ?></td>
+                                                    <td><?php echo $rowPaket['harga'] ?></td>
+                                                    <td><?php echo $rowPaket['deskripsi'] ?></td>
+                                                    <td>| <a href="add_paket.php?edit=<?php echo $rowPaket['id'] ?>"><i class='bx bx-edit-alt'></i></a> | | <a href="paket.php?delete=<?php echo $rowPaket['id'] ?>" onclick="return confirm('Apakah anda yakin akan menghapus data ini??')"><i class='bx bx-trash'></i> |</a></td>
                                                     </td>
                                                 </tr>
                                             <?php endwhile ?>

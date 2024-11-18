@@ -1,12 +1,12 @@
 <?php
 
 include '../koneksi.php';
-$customer = mysqli_query($koneksi,"SELECT * FROM customer ORDER BY id DESC");
+$transaksi = mysqli_query($koneksi,"SELECT customer.nama_customer, data_transaksi.* FROM data_transaksi LEFT JOIN customer ON customer.id = data_transaksi.id_customer ORDER BY id DESC");
 
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
     $delete = mysqli_query($koneksi, "DELETE FROM customer WHERE id='$id'");
-    header("location: customer.php?hapus=berhasil");
+    header("location: data-transaksi.php?hapus=berhasil");
 }
 
 // 
@@ -49,30 +49,30 @@ if (isset($_GET['delete'])) {
                             <div class="card">
                                 <h5 class="card-header">Customer</h5>
                                     <div align="right">
-                                        <a href="add_customer.php" class="btn btn-success"><i class="fa-solid fa-square-plus"></i>Tambah</a>
+                                        <a href="add_data-transaksi.php" class="btn btn-success"><i class="fa-solid fa-square-plus"></i>Tambah</a>
                                     </div>
                                 <div class="table-responsive text-nowrap">
                                     <table class="table table-hover">
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Nama Lengkap</th>
-                                                <th>Telepon</th>
-                                                <th>Alamat</th>
-                                                <th>Status</th>
+                                                <th>Nama Customer</th>
+                                                <th>Kode Order</th>
+                                                <th>Tanggal Order</th>
+                                                <th>Status Order</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody class="table-border-bottom-0">
                                             <?php $no = 1;
-                                            while ($rowCustomer = mysqli_fetch_assoc($customer)) : ?>
+                                            while ($rowTransaksi = mysqli_fetch_assoc($transaksi)) : ?>
                                                 <tr>
                                                     <td><?php echo $no++ ?></td>
-                                                    <td><?php echo $rowCustomer['nama_customer'] ?></td>
-                                                    <td><?php echo $rowCustomer['phone'] ?></td>
-                                                    <td><?php echo $rowCustomer['address'] ?></td>
-                                                    <td><a href="data-customer.php?edit=<?php echo $rowCustomer['id'] ?>" class="btn btn-success">Lihat Status</a></td>
-                                                    <td>| <a href="add_customer.php?edit=<?php echo $rowCustomer['id'] ?>"><i class='bx bx-edit-alt'></i></a> | | <a href="customer.php?delete=<?php echo $rowCustomer['id'] ?>" onclick="return confirm('Apakah anda yakin akan menghapus data ini??')"><i class='bx bx-trash'></i> |</a></td>
+                                                    <td><?php echo $rowTransaksi['nama_customer'] ?></td>
+                                                    <td><?php echo $rowTransaksi['kode_order'] ?></td>
+                                                    <td><?php echo $rowTransaksi['tanggal_order'] ?></td>
+                                                    <td><a href="data-customer.php?edit=<?php echo $rowTransaksi['id'] ?>" class="btn btn-success">Lihat Status</a></td>
+                                                    <td>| <a href="add_transaksi.php?edit=<?php echo $rowTransaksi['id'] ?>"><i class='bx bx-edit-alt'></i></a> | | <a href="transaksi.php?delete=<?php echo $rowTransaksi['id'] ?>" onclick="return confirm('Apakah anda yakin akan menghapus data ini??')"><i class='bx bx-trash'></i> |</a></td>
                                                     </td>
                                                 </tr>
                                             <?php endwhile ?>

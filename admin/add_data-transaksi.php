@@ -2,26 +2,28 @@
 include '../koneksi.php';
 //aksi untuk tambah
 if (isset($_POST['simpan'])) {
-    $nama_customer = $_POST['nama_customer'];
-    $phone = $_POST['phone'];
-    $address = $_POST['address'];
+    $id_customer = $_POST['id_customer'];
+    $kode_order = $_POST['kode_order'];
+    $tanggal_order = $_POST['tanggal_order'];
+    $status_order = $_POST['status_order'];
 
-    $insert = mysqli_query($koneksi, "INSERT INTO  customer (nama_customer, phone, address) VALUES ('$nama_customer', '$phone', '$address')");
-    header("location:customer.php?tambah=berhasil");
+    $insert = mysqli_query($koneksi, "INSERT INTO  data_transaksi (id_customer, kode_order, tanggal_order, status_order) VALUES ('$data_transaksi', '$id_customer', '$kode_order', '$tanggal_order', '$status_order')");
+    header("location:data-transaksi.php?tambah=berhasil");
 }
 
 //aksi untuk edit
 $id = isset($_GET['edit']) ? $_GET['edit'] : '';
-$queryEdit = mysqli_query($koneksi, "SELECT * FROM customer WHERE id = '$id'");
+$queryEdit = mysqli_query($koneksi, "SELECT * FROM data_transaksi WHERE id = '$id'");
 $rowEdit = mysqli_fetch_assoc($queryEdit);
 
 if (isset($_POST['edit'])) {
-    $nama_customer = $_POST['nama_customer'];
-    $phone = $_POST['phone'];
-    $address = $_POST['address'];
+    $id_customer = $_POST['id_customer'];
+    $kode_order = $_POST['kode_order'];
+    $tanggal_order = $_POST['tanggal_order'];
+    $status_order = $_POST['status_order'];
 
-    $update = mysqli_query($koneksi, "UPDATE customer SET address='$address', nama_customer='$nama_customer', phone='$phone'  WHERE id='$id'");
-    header("location:customer.php?edit=berhasil");
+    $update = mysqli_query($koneksi, "UPDATE data_transaksi SET id_customer='$id_customer', kode_order='$kode_order', tanggal_order='$tanggal_order', '$status_order'  WHERE id='$id'");
+    header("location:data-transaksi.php?edit=berhasil");
 }
 
 ?>
@@ -63,19 +65,19 @@ if (isset($_POST['edit'])) {
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="card">
-                                    <div class="card-header"><?php echo isset($_GET['edit']) ? 'Edit' : 'Tambah' ?> Customer</div>
+                                    <div class="card-header"><?php echo isset($_GET['edit']) ? 'Edit' : 'Tambah' ?> Transaksi</div>
                                     <div class="card-body">
                                         <form action="" method="post" enctype="multipart/form-data">
                                             <div class="mb-3 row">
                                                 <div class="col-sm-6">
-                                                    <label for="" class="form-label">Nama</label>
+                                                    <label for="" class="form-label">Nama Customer</label>
                                                     <input type="text" class="form-control" id="" name="nama_customer" placeholder="Masukkan Nama Customer" required
                                                         value="<?php echo isset($_GET['edit']) ? $rowEdit['nama_customer'] : '' ?>">
                                                 </div>
                                                 <div class="col-sm-6">
-                                                    <label for="" class="form-label">Telephone</label>
-                                                    <input type="number" class="form-control" id="" name="phone" placeholder="Masukkan Email Anda" required
-                                                        value="<?php echo isset($_GET['edit']) ? $rowEdit['phone'] : '' ?>">
+                                                    <label for="" class="form-label">Kode Transaksi</label>
+                                                    <input type="kode_transaksi" class="form-control" id="" name="phone" placeholder="Masukkan Email Anda" required
+                                                        value="<?php echo isset($_GET['edit']) ? $rowEdit['kode_transaksi'] : '' ?>">
                                                 </div>
                                                 <div class="col-sm-12">
                                                     <label for="" class="form-label">Address</label>

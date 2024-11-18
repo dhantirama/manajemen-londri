@@ -26,7 +26,7 @@ if (isset($_POST['login'])) {
             $_SESSION['nama'] = $rowLogin['nama'];
             $_SESSION['id']    = $rowLogin['id'];
             $_SESSION['id_level'] = $rowLogin['id_level'];
-            header("location: dashboard.php");
+            header("location: admin/dashboard.php");
         } else {
             header("location: login.php?login=gagal");
         }
@@ -36,7 +36,7 @@ if (isset($_POST['login'])) {
             $_SESSION['nama'] = $rowLogin['nama'];
             $_SESSION['id']    = $rowLogin['id'];
             $_SESSION['id_level'] = $rowLogin['id_level'];
-            header("location: dashboard.php");
+            header("location: admin/dashboard.php");
         } else {
 
             header("location: login.php?login=gagal");
@@ -79,7 +79,7 @@ if (isset($_POST['login'])) {
         name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Login Basic - Pages | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>Login Laundry Sukacita</title>
 
     <meta name="description" content="" />
 
@@ -94,25 +94,25 @@ if (isset($_POST['login'])) {
         rel="stylesheet" />
 
     <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="assets/admin/assets/vendor/fonts/boxicons.css" />
+    <link rel="stylesheet" href="assets/assets/vendor/fonts/boxicons.css" />
 
     <!-- Core CSS -->
-    <link rel="stylesheet" href="assets/admin/assets/vendor/css/core.css" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="assets/admin/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="assets/admin/assets/css/demo.css" />
+    <link rel="stylesheet" href="assets/assets/vendor/css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="assets/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="assets/assets/css/demo.css" />
 
     <!-- Vendors CSS -->
-    <link rel="stylesheet" href="assets/admin/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="assets/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
 
     <!-- Page CSS -->
     <!-- Page -->
-    <link rel="stylesheet" href="assets/admin/assets/vendor/css/pages/page-auth.css" />
+    <link rel="stylesheet" href="assets/assets/vendor/css/pages/page-auth.css" />
     <!-- Helpers -->
-    <script src="assets/admin/assets/vendor/js/helpers.js"></script>
+    <script src="assets/assets/vendor/js/helpers.js"></script>
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="assets/admin/assets/js/config.js"></script>
+    <script src="assets/assets/js/config.js"></script>
 </head>
 
 <body>
@@ -238,27 +238,21 @@ if (isset($_POST['login'])) {
 
     <!-- / Content -->
 
-    <div class="buy-now">
-        <a
-            href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/"
-            target="_blank"
-            class="btn btn-danger btn-buy-now">Upgrade to Pro</a>
-    </div>
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
-    <script src="assets/admin/assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="assets/admin/assets/vendor/libs/popper/popper.js"></script>
-    <script src="assets/admin/assets/vendor/js/bootstrap.js"></script>
-    <script src="assets/admin/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="assets/assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="assets/assets/vendor/libs/popper/popper.js"></script>
+    <script src="assets/assets/vendor/js/bootstrap.js"></script>
+    <script src="assets/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
-    <script src="assets/admin/assets/vendor/js/menu.js"></script>
+    <script src="assets/assets/vendor/js/menu.js"></script>
     <!-- endbuild -->
 
     <!-- Vendors JS -->
 
     <!-- Main JS -->
-    <script src="assets/admin/assets/js/main.js"></script>
+    <script src="assets/assets/js/main.js"></script>
 
     <!-- Page JS -->
 
