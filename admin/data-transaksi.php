@@ -1,7 +1,7 @@
 <?php
 
 include '../koneksi.php';
-$transaksi = mysqli_query($koneksi,"SELECT customer.nama_customer, data_transaksi.* FROM data_transaksi LEFT JOIN customer ON customer.id = data_transaksi.id_customer ORDER BY id DESC");
+$transaksi = mysqli_query($koneksi, "SELECT customer.nama_customer, data_transaksi.* FROM data_transaksi LEFT JOIN customer ON customer.id = data_transaksi.id_customer ORDER BY id DESC");
 
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
@@ -23,7 +23,7 @@ if (isset($_GET['delete'])) {
     data-template="vertical-menu-template-free">
 
 <head>
-   <?php include '../inc/head.php'; ?>
+    <?php include '../inc/head.php'; ?>
 </head>
 
 <body>
@@ -48,9 +48,9 @@ if (isset($_GET['delete'])) {
                         <div class="row">
                             <div class="card">
                                 <h5 class="card-header">Customer</h5>
-                                    <div align="right">
-                                        <a href="add_data-transaksi.php" class="btn btn-success"><i class="fa-solid fa-square-plus"></i>Tambah</a>
-                                    </div>
+                                <div align="right">
+                                    <a href="add_data-transaksi.php" class="btn btn-success"><i class="fa-solid fa-square-plus"></i>Tambah</a>
+                                </div>
                                 <div class="table-responsive text-nowrap">
                                     <table class="table table-hover">
                                         <thead>
@@ -71,8 +71,21 @@ if (isset($_GET['delete'])) {
                                                     <td><?php echo $rowTransaksi['nama_customer'] ?></td>
                                                     <td><?php echo $rowTransaksi['kode_order'] ?></td>
                                                     <td><?php echo $rowTransaksi['tanggal_order'] ?></td>
-                                                    <td><a href="data-customer.php?edit=<?php echo $rowTransaksi['id'] ?>" class="btn btn-success">Lihat Status</a></td>
-                                                    <td>| <a href="add_transaksi.php?edit=<?php echo $rowTransaksi['id'] ?>"><i class='bx bx-edit-alt'></i></a> | | <a href="transaksi.php?delete=<?php echo $rowTransaksi['id'] ?>" onclick="return confirm('Apakah anda yakin akan menghapus data ini??')"><i class='bx bx-trash'></i> |</a></td>
+                                                    <td>
+                                                        <?php
+                                                        switch ($rowTransaksi['status_order']) {
+                                                            case '1':
+                                                                $badge = "<span class='badge bg-success'>Sudah dikembalikan</span>";
+                                                                break;
+
+                                                            default:
+                                                                $badge = "<span class='badge bg-warning'>Baru</span>";
+                                                                break;
+                                                        }
+                                                        echo $badge;
+                                                        ?></td>
+                                                    <td>| <a target="_blank" href="add_data-transaksi.php?detail=<?php echo $rowTransaksi['id'] ?>"><i class='bx bx-show'></i></a>
+                                                        | <a target="_blank" href="print.php?id=<?php echo $rowTransaksi['id'] ?>"><i class='bx bx-printer'></i></a> | | <a href="transaksi.php?delete=<?php echo $rowTransaksi['id'] ?>" onclick="return confirm('Apakah anda yakin akan menghapus data ini??')"><i class='bx bx-trash'></i> |</a></td>
                                                     </td>
                                                 </tr>
                                             <?php endwhile ?>
