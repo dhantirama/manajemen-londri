@@ -112,8 +112,13 @@ session_start();
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="pengembalian.php" class="menu-link">
+                        <a href="trans-pickup.php" class="menu-link">
                             <div data-i18n="Text Divider">Transaksi Pengembalian</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="laporan.php" class="menu-link">
+                            <div data-i18n="Text Divider">Laporan Transaksi</div>
                         </a>
                     </li>
                 </ul>
